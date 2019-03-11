@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/uiTest">
+        <file>Resources/ICon/folder.ico</file>
+    </qresource>
+</RCC>
