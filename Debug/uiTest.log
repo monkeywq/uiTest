@@ -1,23 +1,9 @@
-﻿生成启动时间为 2019/1/22 星期二 19:16:13。
-     1>项目“C:\Users\Administrator\Desktop\QtProject\UITest\uiTest\uiTest\uiTest.vcxproj”在节点 2 上(Build 个目标)。
-     1>CustomBuild:
-         Moc'ing uiTest.h...
-       ClCompile:
-         D:\VS2013\VC\bin\CL.exe /c /I.\GeneratedFiles /I. /ID:\Qt\5.6\msvc2013\include /I.\GeneratedFiles\Debug /ID:\Qt\5.6\msvc2013\include\QtCore /ID:\Qt\5.6\msvc2013\include\QtGui /ID:\Qt\5.6\msvc2013\include\QtWidgets /ID:\Qt\5.6\msvc2013\include\QtSerialPort /Zi /nologo /W1 /WX- /Od /Oy- /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /D QT_SERIALPORT_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GeneratedFiles\Debug\moc_uiTest.cpp main.cpp uiTest.cpp
-         moc_uiTest.cpp
-         main.cpp
-         uiTest.cpp
-         正在生成代码...
-         D:\VS2013\VC\bin\CL.exe /c /I.\GeneratedFiles /I. /ID:\Qt\5.6\msvc2013\include /I.\GeneratedFiles\Debug /ID:\Qt\5.6\msvc2013\include\QtCore /ID:\Qt\5.6\msvc2013\include\QtGui /ID:\Qt\5.6\msvc2013\include\QtWidgets /ID:\Qt\5.6\msvc2013\include\QtSerialPort /Zi /nologo /W1 /WX- /Od /Oy- /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /D QT_SERIALPORT_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GeneratedFiles\qrc_uiTest.cpp
-         qrc_uiTest.cpp
-       Link:
-         D:\VS2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Administrator\Desktop\QtProject\UITest\uiTest\Win32\Debug\\uiTest.exe" /NOLOGO /LIBPATH:D:\Qt\5.6\msvc2013\lib qtmaind.lib Qt5Cored.lib Qt5Guid.lib Qt5Widgetsd.lib Qt5SerialPortd.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Administrator\Desktop\QtProject\UITest\uiTest\Win32\Debug\uiTest.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Administrator\Desktop\QtProject\UITest\uiTest\Win32\Debug\uiTest.lib" /MACHINE:X86 /SAFESEH Debug\moc_uiTest.obj
-         Debug\qrc_uiTest.obj
-         Debug\main.obj
-         Debug\uiTest.obj
-         uiTest.vcxproj -> C:\Users\Administrator\Desktop\QtProject\UITest\uiTest\Win32\Debug\uiTest.exe
-     1>已完成生成项目“C:\Users\Administrator\Desktop\QtProject\UITest\uiTest\uiTest\uiTest.vcxproj”(Build 个目标)的操作。
+﻿生成启动时间为 2019/3/11 星期一 22:33:09。
+     1>项目“G:\git\UITest\uiTest\uiTest.vcxproj”在节点 2 上(Build 个目标)。
+     1>Link:
+         uiTest.vcxproj -> G:\git\QtUITest\QtUITest\Win32\Debug\uiTest.exe
+     1>已完成生成项目“G:\git\UITest\uiTest\uiTest.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:03.04
+已用时间 00:00:00.04
