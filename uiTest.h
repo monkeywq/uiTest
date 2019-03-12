@@ -14,23 +14,23 @@ class uiTest : public QMainWindow
 	Q_OBJECT
 	
 public:
-	QPixmap *firstAxisMap;
-	QPainter *firstAxisMapPainter;
-	QPixmap *secondAxisMap;
-	QPainter *secondAxisMapPainter;
-	QPen *p;
-	int firstAxisMapX0,firstAxisMapY0;
-	int secondAxisMapX0, secondAxisMapY0;
-	int firstAxisMapW, firstAxisMapH;
-	int secondAxisMapW, secondAxisMapH;
-	float firstAxisF, firstAxisA;
-	float secondAxisF, secondAxisA;
-	int GKNumber;
-	QFile *GKFile;
-	QTime currentTime;
-	QSerialPort *serialPort;
-	QSerialPort *serialPortTest;
-	QString GK;
+	//QPixmap *firstAxisMap;
+	//QPainter *firstAxisMapPainter;
+	//QPixmap *secondAxisMap;
+	//QPainter *secondAxisMapPainter;
+	//QPen *p;
+	//int firstAxisMapX0,firstAxisMapY0;
+	//int secondAxisMapX0, secondAxisMapY0;
+	//int firstAxisMapW, firstAxisMapH;
+	//int secondAxisMapW, secondAxisMapH;
+	//float firstAxisF, firstAxisA;
+	//float secondAxisF, secondAxisA;
+	//int GKNumber;
+	//QFile *GKFile;
+	//QTime currentTime;
+	//QSerialPort *serialPort;
+	//QSerialPort *serialPortTest;
+	//QString GK;
 	
 public:
 	uiTest(QWidget *parent = Q_NULLPTR);
@@ -58,7 +58,23 @@ private slots:
 	 void slotChangeGKPram();
 	 void slotSelectGKFile();
 	 void slotSelectGKNumber();
-
 private:
 	Ui::uiTestClass ui;
+	QPixmap *firstAxisMap;
+	QPainter *firstAxisMapPainter;
+	QPixmap *secondAxisMap;
+	QPainter *secondAxisMapPainter;
+	QPen *p;
+	int firstAxisMapX0, firstAxisMapY0;
+	int secondAxisMapX0, secondAxisMapY0;
+	int firstAxisMapW, firstAxisMapH;
+	int secondAxisMapW, secondAxisMapH;
+	float firstAxisF, firstAxisA;
+	float secondAxisF, secondAxisA;
+	int GKNumber;
+	QFile *GKFile;
+	QTime currentTime;
+	QSerialPort *serialPort;
+	QSerialPort *serialPortTest;
+	QString GK;
 };
