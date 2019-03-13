@@ -58,6 +58,7 @@ private slots:
 	 void slotChangeGKPram();
 	 void slotSelectGKFile();
 	 void slotSelectGKNumber();
+	 void slotStopSys();
 private:
 	Ui::uiTestClass ui;
 	QPixmap *firstAxisMap;
@@ -77,4 +78,5 @@ private:
 	QSerialPort *serialPort;
 	QSerialPort *serialPortTest;
 	QString GK;
+	bool runState;
 };

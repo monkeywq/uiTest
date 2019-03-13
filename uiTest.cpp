@@ -5,7 +5,8 @@
 #include <QFileDialog>
 #include <QtCore/QTextStream>
 #include <QTime>
-
+#define sysOn  1
+#define sysOff 0
 #define PI acos(-1)
 uiTest::uiTest(QWidget *parent)
 	: QMainWindow(parent)
@@ -17,8 +18,9 @@ uiTest::uiTest(QWidget *parent)
 	secondAxisF = 0; //副轴频率
 	GKNumber = 0;    //工况编号
 	GKFile = new QFile("./GK/gk1.txt");  //工况文件
-	ui.setupUi(this);
+	runState = sysOff;
 
+	ui.setupUi(this);
 	QAction *openAction = new QAction(QStringLiteral("打开"), this);   //打开文件动作
 	firstAxisMap = new QPixmap(ui.firstAxis->width(),ui.firstAxis->height());   // 主轴波形画布
 	firstAxisMapPainter = new QPainter(firstAxisMap);                       // 主轴波形画笔
@@ -89,6 +91,16 @@ uiTest::uiTest(QWidget *parent)
 
 	setWindowFlags(windowFlags()&~Qt::WindowMaximizeButtonHint);    // 禁止最大化按钮
 	setFixedSize(this->width(), this->height());                     // 禁止拖动窗口大小
+	if (sysOn)                                 //运行状态
+	{
+		ui.pushButton_2->setEnabled(true);
+		ui.pushButton_4->setDisabled(true);
+	}
+	else                                    //停止状态
+	{
+		ui.pushButton_2->setDisabled(true);
+		ui.pushButton_4->setEnabled(true);
+	}
 
 	connect(ui.openAction, SIGNAL(triggered()), this, SLOT(slotOpenFile()));
 	connect(ui.closeAction,SIGNAL(triggered()), this, SLOT(slotTest2()));
@@ -194,7 +206,7 @@ void uiTest::serialPortInit(QSerialPort *s,QString *n)
 	s->setParity(QSerialPort::NoParity);
 	s->setStopBits(QSerialPort::OneStop);
 	s->setFlowControl(QSerialPort::NoFlowControl);
-	QMessageBox::about(NULL, "message", "successful!");
+	QMessageBox::about(NULL, CN("提示"), CN("打开串口成功！"));
 	timeStr = "serial port is opened  " + timeStr;
 	ui.textBrowser->append(timeStr);
 	//ui.textBrowser->setText("OK!");
@@ -255,13 +267,12 @@ void uiTest::serialSendData(QSerialPort *s, QString *str)
 		QString strData = '{'+ui.lineEdit->text() + ',' + ui.lineEdit_2->text() + ',' + ui.lineEdit_3->text() + ',' + ui.lineEdit_4->text()+'}';
 		QByteArray byteData = strData.toLatin1();
 		s->write(byteData);
-		ui.textBrowser->append(ui.lineEdit->text());
+		ui.textBrowser->append(strData +'  ' + QTime::currentTime().toString("hh:mm:ss"));
 	}
 	else
 	{
 		QMessageBox::warning(this, CN("警告"), CN("串口未打开！"));
 	}
-	
 	//QMessageBox::about(NULL, "message", "OK");
 }
 void uiTest::serialPortClose(QSerialPort *s, QString *n)

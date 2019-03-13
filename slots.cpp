@@ -22,6 +22,8 @@ void uiTest::slotSerialPortClose()
 void uiTest::slotSerialPortSendData()
 {
 	QString s = "OK";
+	ui.pushButton_2->setDisabled(true);
+	ui.pushButton_4->setEnabled(true);
 	serialSendData(serialPort, &s);
 }
 void uiTest::slotSerialPortInit()
@@ -106,4 +108,16 @@ void uiTest::slotSelectGKNumber()
 	GKNumber = ui.lineEdit_5->text().toInt();
 	//QMessageBox::about(NULL, "OK", "OK");
 
+}
+void uiTest::slotStopSys()
+{
+	if (serialPort->isOpen() == true)
+	{
+		QMessageBox::about(this, "about", "OK");
+		ui.pushButton_2->setEnabled(true);
+		ui.pushButton_4->setDisabled(true);
+		QString strData = "{s}";
+		QByteArray byteData = strData.toLatin1();
+		serialPort->write(byteData);
+	}
 }

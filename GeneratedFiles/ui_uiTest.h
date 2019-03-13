@@ -21,7 +21,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -83,7 +82,6 @@ public:
     QPushButton *pushButton_6;
     QSpacerItem *horizontalSpacer_2;
     QMenuBar *menuBar;
-    QMenu *menu;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
     QToolBar *toolBar;
@@ -380,8 +378,6 @@ public:
         menuBar = new QMenuBar(uiTestClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 799, 23));
-        menu = new QMenu(menuBar);
-        menu->setObjectName(QStringLiteral("menu"));
         uiTestClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(uiTestClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -393,15 +389,12 @@ public:
         toolBar->setObjectName(QStringLiteral("toolBar"));
         uiTestClass->addToolBar(Qt::TopToolBarArea, toolBar);
 
-        menuBar->addAction(menu->menuAction());
-        toolBar->addAction(openAction);
-
         retranslateUi(uiTestClass);
         QObject::connect(checkBox, SIGNAL(stateChanged(int)), uiTestClass, SLOT(slotControlInput()));
         QObject::connect(pushButton, SIGNAL(clicked()), uiTestClass, SLOT(slotViewCurve()));
         QObject::connect(pushButton_3, SIGNAL(clicked()), uiTestClass, SLOT(slotSerialPortInit()));
         QObject::connect(pushButton_2, SIGNAL(clicked()), uiTestClass, SLOT(slotSerialPortSendData()));
-        QObject::connect(pushButton_4, SIGNAL(clicked()), uiTestClass, SLOT(slotSerialPortReciveData()));
+        QObject::connect(pushButton_4, SIGNAL(clicked()), uiTestClass, SLOT(slotStopSys()));
         QObject::connect(pushButton_7, SIGNAL(clicked()), uiTestClass, SLOT(slotSerialPortClose()));
         QObject::connect(pushButton_8, SIGNAL(clicked()), uiTestClass, SLOT(slotSerialPortTestInit()));
         QObject::connect(pushButton_6, SIGNAL(clicked()), uiTestClass, SLOT(slotSaveFile()));
@@ -449,7 +442,6 @@ public:
         pushButton_2->setText(QApplication::translate("uiTestClass", "\350\277\220\350\241\214", 0));
         pushButton_4->setText(QApplication::translate("uiTestClass", "\345\201\234\346\255\242", 0));
         pushButton_6->setText(QApplication::translate("uiTestClass", "\344\277\235\345\255\230\345\267\245\345\206\265", 0));
-        menu->setTitle(QApplication::translate("uiTestClass", "\346\226\207\344\273\266", 0));
         toolBar->setWindowTitle(QApplication::translate("uiTestClass", "toolBar", 0));
     } // retranslateUi
 

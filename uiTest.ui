@@ -735,7 +735,7 @@
    <sender>pushButton_4</sender>
    <signal>clicked()</signal>
    <receiver>uiTestClass</receiver>
-   <slot>slotSerialPortReciveData()</slot>
+   <slot>slotStopSys()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>441</x>
@@ -924,5 +924,6 @@
   <slot>slotChangeGKPram()</slot>
   <slot>slotSelectGKFile()</slot>
   <slot>slotSelectGKNumber()</slot>
+  <slot>slotStopSys()</slot>
  </slots>
 </ui>
