@@ -8,6 +8,9 @@
 #define sysOn  1
 #define sysOff 0
 #define PI acos(-1)
+QString MYYLABEL[] = { "90", "45", "0", "-45", "-90" };
+QString MYXLABEL[] = { " 0", " 2", " 4", " 6", " 8" };
+//#define MYYLABEL {""}
 uiTest::uiTest(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -101,7 +104,7 @@ uiTest::uiTest(QWidget *parent)
 		ui.pushButton_2->setDisabled(true);
 		ui.pushButton_4->setEnabled(true);
 	}
-
+	ui.pushButton_2->setDisabled(true);
 	connect(ui.openAction, SIGNAL(triggered()), this, SLOT(slotOpenFile()));
 	connect(ui.closeAction,SIGNAL(triggered()), this, SLOT(slotTest2()));
 	
@@ -136,17 +139,25 @@ void uiTest::drawAxis(QPainter *painter)
 	
 	int y = firstAxisMapY0;
 	int x = firstAxisMapX0;
+	int LabelPos = 0;
 	while (y < firstAxisMapY0 + firstAxisMapH)  //绘制y轴，从y0到y0+H，均匀绘制
 	{
 		y += firstAxisMapH / 6;                //6等分y轴
-		painter->drawLine(firstAxisMapX0, y, firstAxisMapX0 + firstAxisMapW, y);
 		
+		painter->drawLine(firstAxisMapX0, y, firstAxisMapX0 + firstAxisMapW, y);
+		if (LabelPos<5)
+			painter->drawText(0, y, MYYLABEL[LabelPos]);
+		LabelPos++;
 	}
+	LabelPos = 0;
 	while (x < firstAxisMapX0 + firstAxisMapW) //绘制x轴，从x0到x0+W，均匀绘制
 	{
 		x += firstAxisMapW / 5;      //5等分x轴
+
 		painter->drawLine(x, firstAxisMapY0, x,firstAxisMapY0 + firstAxisMapH);
-		
+		if (LabelPos<5)
+			painter->drawText(LabelPos*firstAxisMapW / 5, firstAxisMapH-2, MYXLABEL[LabelPos]);
+		LabelPos++;
 	}
 
 	painter->setPen(p0);
@@ -331,24 +342,22 @@ void uiTest::setGKNumber()
 	txtInput.seek(0);
 	int line = 0;
 	QString str1;
-	while (line <= GKNumber)
+	bool isFound = false;
+	while (txtInput.atEnd()==false)
 	{
-		if (txtInput.atEnd() == true)
-		{
-			
-			QMessageBox::warning(NULL, CN("警告"), CN("找不到该工况！"));
-			return;
-		}
 		str1 = txtInput.readLine();
-		line++;
+		QStringList list = str1.split(" ");
+		if (list[0].toInt() == GKNumber)
+		{
+			firstAxisA = list[2].toFloat();
+			firstAxisF = list[4].toFloat();
+			secondAxisA = list[6].toFloat();
+			secondAxisF = list[8].toFloat();
+			isFound = true;
+		}
 	}
-	
-	QStringList list=str1.split(" ");
-	firstAxisA = list[2].toFloat();
-	firstAxisF = list[4].toFloat();
-	secondAxisA = list[6].toFloat();
-	secondAxisF = list[8].toFloat();
-	QMessageBox::about(NULL, "me", QString::number(list[2].toInt()));
+	if (isFound == false)
+		QMessageBox::warning(NULL, CN("警告"), CN("找不到该工况！"));
 	GKFile->close();
 }
 void uiTest::saveFileAsTxt(QString str)
@@ -358,18 +367,25 @@ void uiTest::saveFileAsTxt(QString str)
 	f.open(QIODevice::ReadOnly | QIODevice::Text);
 	int lineNumber = 0;
 	QTextStream txtInPut(&f);
+	lineNumber = ui.lineEdit_6->text().toInt();
 	while (!txtInPut.atEnd())
 	{
-		QString str;
-		str+= txtInPut.readLine();
-		lineNumber++;
-	}
-	f.close();///获取行号
+		QString str1;
+		str1= txtInPut.readLine();
+		if (str1.split(" ")[0].toInt() == lineNumber)
 
+		{
+			QMessageBox::warning(NULL, CN("警告"), CN("工况已存在，请更换编号！"));
+			f.close();
+			return;
+		}
+
+	}
+	f.close();
 	f.open(QIODevice::WriteOnly | QIODevice::Text|QIODevice::Append);
 	QTextStream txtOutPut(&f);
-	txtOutPut <<QString::number(lineNumber)+": "+str << endl;
-	
+	txtOutPut <<QString::number(lineNumber)+" "+str << endl;
 	f.close();
+	QMessageBox::about(NULL, CN("消息"), CN("保存成功！"));
 }
 

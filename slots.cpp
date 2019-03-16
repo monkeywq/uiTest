@@ -18,6 +18,7 @@ void uiTest::slotSerialPortClose()
 	currentTime = QTime::currentTime();
 	str = "serial port is closed  " + currentTime.toString("hh:mm:ss");
 	ui.textBrowser->append(str);
+	ui.pushButton_2->setDisabled(true);
 }
 void uiTest::slotSerialPortSendData()
 {
@@ -30,6 +31,10 @@ void uiTest::slotSerialPortInit()
 {
 	QString name = ui.comboBox_2->currentText();
 	serialPortInit(serialPort, &name);
+	if (serialPort->isOpen() == true)
+	{
+		ui.pushButton_2->setEnabled(true);
+	}
 }
 void uiTest::slotControlInput()
 {
@@ -73,7 +78,6 @@ void uiTest::slotSaveFile()
 	if (choose == QMessageBox::Yes)
 	{
 		saveFileAsTxt(s1);
-		QMessageBox::about(NULL, CN("消息"), CN("保存成功！"));
 	}
 
 }
@@ -89,7 +93,13 @@ void uiTest::slotViewCurve()
 	}
 	else
 	{
+		GKNumber = ui.lineEdit_5->text().toInt();
 		setGKNumber();
+		ui.lineEdit->setText(QString::number(firstAxisA));
+		ui.lineEdit_2->setText(QString::number(firstAxisF));
+		ui.lineEdit_3->setText(QString::number(secondAxisA));
+		ui.lineEdit_4->setText(QString::number(secondAxisF));
+		showCurve();
 	}
 }
 void uiTest::slotChangeGKPram()
@@ -105,6 +115,7 @@ void uiTest::slotSelectGKFile()
 }
 void uiTest::slotSelectGKNumber()
 {
+	GKNumber = ui.lineEdit_5->text().toInt();
 	GKNumber = ui.lineEdit_5->text().toInt();
 	//QMessageBox::about(NULL, "OK", "OK");
 

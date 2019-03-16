@@ -21,6 +21,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -38,7 +39,7 @@ public:
     QAction *openAction;
     QAction *closeAction;
     QWidget *centralWidget;
-    QGridLayout *gridLayout_2;
+    QGridLayout *gridLayout_3;
     QSpacerItem *horizontalSpacer;
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
@@ -54,13 +55,12 @@ public:
     QPushButton *pushButton_3;
     QPushButton *pushButton_7;
     QPushButton *pushButton_8;
-    QVBoxLayout *verticalLayout_4;
     QVBoxLayout *verticalLayout_2;
     QCheckBox *checkBox;
     QHBoxLayout *horizontalLayout_7;
     QLineEdit *lineEdit_5;
     QPushButton *pushButton_5;
-    QVBoxLayout *verticalLayout_3;
+    QGridLayout *gridLayout_2;
     QLabel *label;
     QHBoxLayout *horizontalLayout_5;
     QSpacerItem *horizontalSpacer_3;
@@ -69,6 +69,9 @@ public:
     QLineEdit *lineEdit_2;
     QLabel *label_4;
     QLabel *label_2;
+    QVBoxLayout *verticalLayout;
+    QLabel *label_7;
+    QLineEdit *lineEdit_6;
     QHBoxLayout *horizontalLayout_6;
     QSpacerItem *horizontalSpacer_4;
     QLineEdit *lineEdit_3;
@@ -82,6 +85,7 @@ public:
     QPushButton *pushButton_6;
     QSpacerItem *horizontalSpacer_2;
     QMenuBar *menuBar;
+    QMenu *menu;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
     QToolBar *toolBar;
@@ -90,7 +94,7 @@ public:
     {
         if (uiTestClass->objectName().isEmpty())
             uiTestClass->setObjectName(QStringLiteral("uiTestClass"));
-        uiTestClass->resize(799, 713);
+        uiTestClass->resize(799, 716);
         openAction = new QAction(uiTestClass);
         openAction->setObjectName(QStringLiteral("openAction"));
         openAction->setCheckable(true);
@@ -102,13 +106,13 @@ public:
         closeAction->setIcon(icon);
         centralWidget = new QWidget(uiTestClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        gridLayout_2 = new QGridLayout(centralWidget);
-        gridLayout_2->setSpacing(6);
-        gridLayout_2->setContentsMargins(11, 11, 11, 11);
-        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        gridLayout_3 = new QGridLayout(centralWidget);
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setContentsMargins(11, 11, 11, 11);
+        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         horizontalSpacer = new QSpacerItem(209, 17, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_2->addItem(horizontalSpacer, 0, 0, 1, 1);
+        gridLayout_3->addItem(horizontalSpacer, 0, 0, 1, 1);
 
         gridLayout = new QGridLayout();
         gridLayout->setSpacing(6);
@@ -159,23 +163,23 @@ public:
         gridLayout->addLayout(horizontalLayout_2, 0, 0, 1, 1);
 
 
-        gridLayout_2->addLayout(gridLayout, 0, 1, 2, 2);
+        gridLayout_3->addLayout(gridLayout, 0, 1, 2, 3);
 
         textBrowser = new QTextBrowser(centralWidget);
         textBrowser->setObjectName(QStringLiteral("textBrowser"));
 
-        gridLayout_2->addWidget(textBrowser, 1, 0, 1, 1);
+        gridLayout_3->addWidget(textBrowser, 1, 0, 1, 1);
 
         comboBox_2 = new QComboBox(centralWidget);
         comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
         comboBox_2->setMinimumSize(QSize(200, 20));
         comboBox_2->setMaximumSize(QSize(200, 20));
 
-        gridLayout_2->addWidget(comboBox_2, 2, 0, 1, 1);
+        gridLayout_3->addWidget(comboBox_2, 2, 0, 1, 1);
 
         verticalSpacer = new QSpacerItem(20, 168, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_2->addItem(verticalSpacer, 2, 2, 3, 1);
+        gridLayout_3->addItem(verticalSpacer, 2, 3, 4, 1);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
@@ -202,11 +206,8 @@ public:
         horizontalLayout_4->addWidget(pushButton_8);
 
 
-        gridLayout_2->addLayout(horizontalLayout_4, 3, 0, 1, 1);
+        gridLayout_3->addLayout(horizontalLayout_4, 3, 0, 1, 1);
 
-        verticalLayout_4 = new QVBoxLayout();
-        verticalLayout_4->setSpacing(6);
-        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
@@ -238,15 +239,15 @@ public:
         verticalLayout_2->addLayout(horizontalLayout_7);
 
 
-        verticalLayout_4->addLayout(verticalLayout_2);
+        gridLayout_3->addLayout(verticalLayout_2, 4, 0, 1, 1);
 
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setSpacing(6);
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
 
-        verticalLayout_3->addWidget(label);
+        gridLayout_2->addWidget(label, 0, 0, 1, 1);
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
@@ -284,12 +285,30 @@ public:
         horizontalLayout_5->addWidget(label_4);
 
 
-        verticalLayout_3->addLayout(horizontalLayout_5);
+        gridLayout_2->addLayout(horizontalLayout_5, 1, 0, 1, 1);
 
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
 
-        verticalLayout_3->addWidget(label_2);
+        gridLayout_2->addWidget(label_2, 2, 0, 1, 1);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        label_7 = new QLabel(centralWidget);
+        label_7->setObjectName(QStringLiteral("label_7"));
+
+        verticalLayout->addWidget(label_7);
+
+        lineEdit_6 = new QLineEdit(centralWidget);
+        lineEdit_6->setObjectName(QStringLiteral("lineEdit_6"));
+        lineEdit_6->setMinimumSize(QSize(61, 20));
+        lineEdit_6->setMaximumSize(QSize(61, 16777215));
+
+        verticalLayout->addWidget(lineEdit_6);
+
+
+        gridLayout_2->addLayout(verticalLayout, 2, 1, 2, 1);
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
@@ -327,13 +346,10 @@ public:
         horizontalLayout_6->addWidget(label_6);
 
 
-        verticalLayout_3->addLayout(horizontalLayout_6);
+        gridLayout_2->addLayout(horizontalLayout_6, 3, 0, 1, 1);
 
 
-        verticalLayout_4->addLayout(verticalLayout_3);
-
-
-        gridLayout_2->addLayout(verticalLayout_4, 4, 0, 2, 1);
+        gridLayout_3->addLayout(gridLayout_2, 5, 0, 2, 2);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
@@ -370,14 +386,18 @@ public:
         horizontalLayout_3->addItem(horizontalSpacer_2);
 
 
-        gridLayout_2->addLayout(horizontalLayout_3, 5, 1, 1, 1);
+        gridLayout_3->addLayout(horizontalLayout_3, 6, 2, 1, 1);
 
         uiTestClass->setCentralWidget(centralWidget);
         comboBox_2->raise();
         textBrowser->raise();
+        lineEdit_6->raise();
+        label_7->raise();
         menuBar = new QMenuBar(uiTestClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 799, 23));
+        menu = new QMenu(menuBar);
+        menu->setObjectName(QStringLiteral("menu"));
         uiTestClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(uiTestClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -389,6 +409,9 @@ public:
         toolBar->setObjectName(QStringLiteral("toolBar"));
         uiTestClass->addToolBar(Qt::TopToolBarArea, toolBar);
 
+        menuBar->addAction(menu->menuAction());
+        toolBar->addAction(openAction);
+
         retranslateUi(uiTestClass);
         QObject::connect(checkBox, SIGNAL(stateChanged(int)), uiTestClass, SLOT(slotControlInput()));
         QObject::connect(pushButton, SIGNAL(clicked()), uiTestClass, SLOT(slotViewCurve()));
@@ -398,13 +421,8 @@ public:
         QObject::connect(pushButton_7, SIGNAL(clicked()), uiTestClass, SLOT(slotSerialPortClose()));
         QObject::connect(pushButton_8, SIGNAL(clicked()), uiTestClass, SLOT(slotSerialPortTestInit()));
         QObject::connect(pushButton_6, SIGNAL(clicked()), uiTestClass, SLOT(slotSaveFile()));
-        QObject::connect(lineEdit, SIGNAL(textChanged(QString)), uiTestClass, SLOT(slotChangeGKPram()));
         QObject::connect(lineEdit_2, SIGNAL(textChanged(QString)), uiTestClass, SLOT(slotChangeFirstAxisF()));
-        QObject::connect(lineEdit_2, SIGNAL(textChanged(QString)), uiTestClass, SLOT(slotChangeGKPram()));
-        QObject::connect(lineEdit_3, SIGNAL(textChanged(QString)), uiTestClass, SLOT(slotChangeGKPram()));
-        QObject::connect(lineEdit_4, SIGNAL(textChanged(QString)), uiTestClass, SLOT(slotChangeGKPram()));
         QObject::connect(pushButton_5, SIGNAL(clicked()), uiTestClass, SLOT(slotSelectGKFile()));
-        QObject::connect(lineEdit_5, SIGNAL(textChanged(QString)), uiTestClass, SLOT(slotSelectGKNumber()));
 
         QMetaObject::connectSlotsByName(uiTestClass);
     } // setupUi
@@ -436,12 +454,14 @@ public:
         label_3->setText(QApplication::translate("uiTestClass", "Pi", 0));
         label_4->setText(QApplication::translate("uiTestClass", "Hz", 0));
         label_2->setText(QApplication::translate("uiTestClass", "\350\276\205\350\275\264 \345\271\205\345\200\274\343\200\201\351\242\221\347\216\207", 0));
+        label_7->setText(QApplication::translate("uiTestClass", "\345\267\245\345\206\265\347\274\226\345\217\267", 0));
         label_5->setText(QApplication::translate("uiTestClass", "Pi", 0));
         label_6->setText(QApplication::translate("uiTestClass", "Hz", 0));
         pushButton->setText(QApplication::translate("uiTestClass", "\351\242\204\350\247\210", 0));
         pushButton_2->setText(QApplication::translate("uiTestClass", "\350\277\220\350\241\214", 0));
         pushButton_4->setText(QApplication::translate("uiTestClass", "\345\201\234\346\255\242", 0));
         pushButton_6->setText(QApplication::translate("uiTestClass", "\344\277\235\345\255\230\345\267\245\345\206\265", 0));
+        menu->setTitle(QApplication::translate("uiTestClass", "\346\226\207\344\273\266", 0));
         toolBar->setWindowTitle(QApplication::translate("uiTestClass", "toolBar", 0));
     } // retranslateUi
 
